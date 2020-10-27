@@ -29,39 +29,25 @@ void always()
     // #endif
  
 }
-void juggle(int a[],int n,int d)
+ 
+int maxProfit(int a[],int n)
 {
-	int sets = __gcd(n,d);
-	int j;
-	for (int i = 0; i < sets; ++i)
-	{	
-		int temp = a[i];
-		int j=i;
-		while(1)
+	
+
+	int prof = 0;
+	for(int i=1;i<n;i++)
+	{
+		if(a[i]>a[i-1])
 		{
-			int r = (d+j)%n;
-
-			if(r==i)	
-				break;
-
-			a[j] = a[r];
-			j = r;
-			
+			prof+=(a[i] - a[i-1]);
 		}
-		a[j] = temp;
-		
 	}
+	return prof;	
 }
 int32_t main()
 {
     always();
- 	// Juggling Algorithm
-    // Array Rotation by D
-    int a[12]={1,2,3,4,5,6,7,8,9,10,11,12};
-    juggle(a,12,3);
-    for (int i = 0; i < 12; ++i)
-    {
-    	cout<<a[i]<<" ";
-    }
+       int a[]={1,5,3,8,12};
+       cout<<maxProfit(a,5);  
     return 0;
 }
